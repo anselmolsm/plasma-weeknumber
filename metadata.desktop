@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Week Number
+Comment=A simple plasmoid to show the current week number
+Type=Service
+X-KDE-ServiceTypes=Plasma/Applet
+
+X-KDE-PluginInfo-Author=Anselmo L. S. Melo
+X-KDE-PluginInfo-Email=anselmolsm@gmail.com
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-Name=org.kde.contrib.weeknumber
+X-KDE-PluginInfo-Version=2.0
+X-KDE-PluginInfo-Website=github.com/anselmolsm/plasma-weeknumber
+X-KDE-PluginInfo-Category=Windows and Tasks
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
