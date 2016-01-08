@@ -27,7 +27,7 @@ PlasmaComponents.Label {
   }
   horizontalAlignment: Text.AlignHCenter
   verticalAlignment: Text.AlignVCenter
-  text: "WW"+ currentWeek()
+  text: "W"+ currentWeek()
 
   function currentWeek() {
     var week = calendarBackend.currentWeek()
