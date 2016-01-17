@@ -22,15 +22,28 @@ import org.kde.plasma.calendar 2.0 as PlasmaCalendar
 
 PlasmaComponents.Label {
   id: label
+
+  property string prefix: plasmoid.configuration.customPrefix
+
   PlasmaCalendar.Calendar {
     id: calendarBackend
   }
   horizontalAlignment: Text.AlignHCenter
   verticalAlignment: Text.AlignVCenter
-  text: "W"+ currentWeek()
+  text: label.prefix + currentWeek()
 
   function currentWeek() {
+    // Sunday & First 4-day week == ISO-8601, which is followed by Qt
     var week = calendarBackend.currentWeek()
+
+    if (plasmoid.configuration.firstWeekOfYearIndex == 1) {
+      // Check if January 1st is after Wednesday.
+      var date = new Date(calendarBackend.year, 1, 1);
+      var firstJanDayofWeek = date.getDay();
+      // Wednesday == 3, week starting on Sunday
+      if (firstJanDayofWeek > 3)
+        week = week + 1;
+    }
     return week < 10 ? "0" + week : week
   }
 
