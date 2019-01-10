@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Layouts 1.1
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.calendar 2.0 as PlasmaCalendar
@@ -38,10 +38,11 @@ PlasmaComponents.Label {
 
     if (plasmoid.configuration.firstWeekOfYearIndex == 1) {
       // Check if January 1st is after Wednesday.
-      var date = new Date(calendarBackend.year, 1, 1);
-      var firstJanDayofWeek = date.getDay();
+      var date = new Date();
+      var janFirst = new Date(date.getFullYear(), 0, 1); // January is 0 in JS
+      var janFirstDayOfWeek = janFirst.getDay();
       // Wednesday == 3, week starting on Sunday
-      if (firstJanDayofWeek > 3)
+      if (janFirstDayOfWeek > 3)
         week = week + 1;
     }
     return week < 10 ? "0" + week : week
