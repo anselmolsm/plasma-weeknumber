@@ -19,10 +19,23 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.1
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import ApplicationLauncher 1.0
+
+Application {
+  id: launch  
+  appName: PlasmaCalendar.Calendar.calendarBackend;
+}
+Timer {
+	interval: 500
+	running: true;
+	repeat: true;
+	onTriggered: label.text = label.prefix+calendarBackend.currentWeek(); 
+}
 
 PlasmaComponents.Label {
   id: label
-
+  text: ""
+  
   property string prefix: plasmoid.configuration.customPrefix
 
   PlasmaCalendar.Calendar {
@@ -30,7 +43,6 @@ PlasmaComponents.Label {
   }
   horizontalAlignment: Text.AlignHCenter
   verticalAlignment: Text.AlignVCenter
-  text: label.prefix + currentWeek()
 
   function currentWeek() {
     // Sunday & First 4-day week == ISO-8601, which is followed by Qt
