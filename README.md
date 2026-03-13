@@ -1,3 +1,7 @@
+# Plasma 6
+
+Ported to Plasma 6 by nahoj - See https://github.com/nahoj/plasma6-weeknumber
+
 # plasma-weeknumber
 Simple plasmoid to show the current week number
 
